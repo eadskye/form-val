@@ -1,17 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<form novalidate name="$ctrl.usernameForm" ng-submit= "$ctrl.submitUsername($ctrl.user.username, $ctrl.user.password)">
-  <div>
+<form novalidate name="$ctrl.usernameForm" ng-submit="$ctrl.submitUsername($ctrl.user.username, $ctrl.user.password)">
+    <div>
 
-    <label for= "username" ng-class="{'has-error': $ctrl.usernameForm.username.$invalid && $ctrl.usernameForm.username.$touched}">Username</label>
-    <input id= "username" name= "username" type= "text" ng-model="$ctrl.user.username" required ng-minlength = "3" mg-maxlength= "11">
-  </div>
-  <div>
-    <label for="password" ng-class="{'has-error': $ctrl.usernameForm.password.$invalid && $ctrl.usernameForm.password.$touched}">Password</label>
-    <input id= "password" name="password" type="password" ng-model ="$ctrl.user.password" required ng-minlength = "3" mg-maxlength= "11">
-  </div>
-  <button type= "submit" ng-disabled= "$ctrl.usernameForm.$invalid">Submit</button>
-  <button ng-click="$ctrl.resetUserNameForm()">Reset</button>
+        <label for="username" ng-class="{'has-error': $ctrl.usernameForm.username.$invalid && $ctrl.usernameForm.username.$touched}">Username</label>
+        <input id="username" name="username" type="text" ng-model="$ctrl.user.username" required ng-minlength="3" mg-maxlength="11">
+    </div>
+    <div>
+        <label for="password" ng-class="{'has-error': $ctrl.usernameForm.password.$invalid && $ctrl.usernameForm.password.$touched}">Password</label>
+        <input id="password" name="password" type="password" ng-model="$ctrl.user.password" required ng-minlength="3" mg-maxlength="11">
+    </div>
+    <button type="submit" ng-disabled="$ctrl.usernameForm.$invalid">Submit</button>
+    <button ng-click="$ctrl.resetUserNameForm()">Reset</button>
+    <div>
+      <p ng-if="$ctrl.usernameForm.username.$invalid && $ctrl.usernameForm.username.$touched">
+        Username must be between 3 and 11 characters in length.
+      </p>
+      <p ng-if="$ctrl.usernameForm.password.$invalid && $ctrl.usernameForm.password.$touched">
+        Please type a password between 3 and 11 characters long.
+      </p>
+    </div>
 </form>
+
 </html>
